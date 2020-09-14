@@ -10,18 +10,23 @@ Installation
 Usage of Terrain
 ----------------
 
-	var dted = require('lethexa-dted');
+const path = require('path');
+const dted = require(path.join(__dirname, 'index.js'));
 
-	var fetcher = new dted.FileSystemTileFetcher('./dted');
-	var terrain = new dted.Terrain(fetcher);
+const fetcher = new dted.FileSystemTileFetcher('./dted');
+const terrain = new dted.Terrain(fetcher);
 
-	terrain.fetchTileAt(lat, lon, function(err, tile) {
-		console.log('Altitude: ', tile.getAltitudeAt(lat, lon));
-	});
 
-	terrain.getAltitudeAt(lat, lon, function(err, alt) {
-		console.log('Altitude: ', alt);
-	});
+async function run(lat, lon) {
+	const tile = await terrain.fetchTileAt(lat, lon)
+	console.log(`Altitude: ${tile.getAltitudeAt(lat, lon)} m ${(tile.getAltitudeAt(lat, lon) * 3.2808).toFixed(2)} ft`);
+
+	const alt = await terrain.getAltitudeAt(lat, lon)
+	console.log(`Altitude: ${alt} m ${(alt * 3.2808).toFixed(2)} ft`);
+}
+
+run(45.689300, -118.848903)
+
 
 
 Usage of Tile
