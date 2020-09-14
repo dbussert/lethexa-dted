@@ -25,7 +25,6 @@ THE SOFTWARE.
 /* global module, __dirname */
 
 var dtedterrain = require('./lib/dtedterrain');
-var dtedterrainsync = require('./lib/dtedterrainsync');
 
 /**
  * A module for reading DTED-data from buffers
@@ -34,6 +33,3 @@ var dtedterrainsync = require('./lib/dtedterrainsync');
 
 module.exports.FileSystemTileFetcher = dtedterrain.FileSystemTileFetcher;
 module.exports.Terrain = dtedterrain.Terrain;
-
-module.exports.FileSystemTileFetcherSync = dtedterrainsync.FileSystemTileFetcher;
-module.exports.TerrainSync = dtedterrainsync.Terrain;

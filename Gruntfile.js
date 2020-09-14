@@ -18,25 +18,20 @@ module.exports = function (grunt) {
                 }
             }
         },
-        jshint: {
-            all: ['lib/*.js', '*.js']
-        },
-        
+
         mochacli: {
           options: {
             reporter: "spec",
             ui: "tdd"
           },
           all: ["test/tests.js"]
-        }    
+        }
     });
 
     grunt.loadNpmTasks("grunt-mocha-cli");
-    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
-    grunt.registerTask('check', ['jshint']);
     grunt.registerTask('test', ['mochacli']);
-    grunt.registerTask('default', ['jshint', 'mochacli', 'yuidoc']);
-    grunt.registerTask('jenkins', ['jshint', 'mochacli', 'yuidoc']);
+    grunt.registerTask('default', ['mochacli', 'yuidoc']);
+    grunt.registerTask('jenkins', ['mochacli', 'yuidoc']);
 };
